@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'create_sign.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -54,9 +56,13 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 16,
               ),
-              ButtonBar(children: [
-                FlatButton(onPressed: () {
+              ButtonBar(
+
+                children: [
+                TextButton(onPressed: () {
                   setState(() {
+
+                    // false 연한거
                     isRegister = false;
 
                   });
@@ -65,15 +71,21 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: isRegister?FontWeight.w400:FontWeight.w600 ,
                         color: isRegister?Colors.black45:Colors.black87),
                     )),
-                FlatButton(onPressed: (){
-                  setState(() {
-                    isRegister = true;
-                  });
+                  TextButton(onPressed: (){
+
+                    Navigator.push(context,
+
+                    MaterialPageRoute(builder: (context)=>CreateApp()),
+                    );
+                    setState(() {
+                      // true 일때는 진하게
+                        isRegister = true;
+                    });
                 },
-                    child: Text(
-                      "Register",style: TextStyle(fontSize: 18,
-                        fontWeight: isRegister?FontWeight.w600:FontWeight.w400  ,
-                        color: isRegister?Colors.black87:Colors.black45),
+                      child: Text(
+                        "Register",style: TextStyle(fontSize: 20,
+                          fontWeight: isRegister?FontWeight.w600:FontWeight.w400  ,
+                          color: isRegister?Colors.black87:Colors.black45),
                     ))
               ],),
               _buildTextFormField("Email",_emilController),
