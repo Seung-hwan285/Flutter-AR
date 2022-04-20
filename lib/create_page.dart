@@ -54,13 +54,7 @@ class _CreatePageState extends State<CreatePage> {
           Padding(padding: EdgeInsets.all(1)),
           _buildTextFormField("이름을 입력해주세요", _nameController),
           Padding(padding: EdgeInsets.all(10)),
-          Container(
-            child: Text("별명",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
-          ),
-          Padding(padding: EdgeInsets.all(1)),
-          _buildTextFormField("별명을 입력해주세요", _nicknameController),
-          Padding(padding: EdgeInsets.all(15)),
+
           Container(
             child: Text("휴대폰 번호",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
