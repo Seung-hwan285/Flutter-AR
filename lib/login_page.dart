@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'create_sign.dart';
+import 'create_page.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 FlatButton(onPressed: (){
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context)=>CreateApp()));
+                      MaterialPageRoute(builder: (context)=>CreatePage()));
                 },
                     child: Text(
                       "Register",style: TextStyle(fontSize: 18,
