@@ -56,7 +56,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ButtonBar(children: [
                 FlatButton(onPressed: () {
-
                 },
                     child: Text("Login", style: TextStyle(fontSize: 18,
                         fontWeight: FontWeight.w600 ,
@@ -130,17 +129,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Container _buildContainer(String imagePath, onPressed) {
-    return Container(
-      width:50,
-      height: 50,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Colors.grey),
-      child: IconButton(
-          icon: ImageIcon(
-              AssetImage(imagePath)),
-          onPressed: onPressed),
-    );
-  }
+
 }
