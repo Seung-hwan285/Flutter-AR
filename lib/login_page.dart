@@ -33,8 +33,6 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -76,13 +74,14 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 8,
               ),
-              _buildTextFormField("Password",_passwordController),
+              _buildPasswordFormFiled("Password",_passwordController),
               SizedBox(
                 height: 8,
               ),
               SizedBox(
                 height: 16,
               ),
+
               new FlatButton(
                 onPressed: (){},
                 color: Colors.lightBlueAccent,
@@ -105,22 +104,43 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  TextFormField _buildPasswordFormFiled(String passwordText, TextEditingController controller){
 
+    return TextFormField(
 
+      cursorColor:  Colors.white,
+      controller:  controller,
+
+      style: TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+
+        prefixIcon: Icon(Icons.lock),
+        labelText: passwordText,
+        filled: true,
+        fillColor: Colors.black54,
+
+        border: _border,
+
+        labelStyle: TextStyle(color: Colors.white),
+        enabledBorder: _border,
+        focusedBorder: _border,
+      ),
+    );
+  }
 
   TextFormField _buildTextFormField(String labelText, TextEditingController controller) {
     return TextFormField(
       cursorColor: Colors.white,
       controller: controller,
-      validator: (text){
-        if(text==null||text.isEmpty){
+      validator: (text) {
+        if (text == null || text.isEmpty) {
           return "Email can\'t be empty";
         }
-
         return null;
       },
       style: TextStyle(color: Colors.white),
-      decoration: new InputDecoration(
+      decoration:  InputDecoration(
+        prefixIcon: Icon(Icons.account_circle),
         labelText: labelText,
         filled: true,
         fillColor: Colors.black45,
@@ -130,7 +150,5 @@ class _LoginPageState extends State<LoginPage> {
         focusedBorder: _border,),
 
     );
-  }
-
-
+    }
 }
