@@ -23,7 +23,7 @@ class _CreatePageState extends State<CreatePage> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  TextEditingController _confirmPassword = TextEditingController();
+  TextEditingController _confirmPasswordCotroller = TextEditingController();
 
   @override
   void initState(){
@@ -53,35 +53,104 @@ class _CreatePageState extends State<CreatePage> {
       textInputAction: TextInputAction.next,
 
       decoration: InputDecoration(
+
+        prefixIcon: Icon(Icons.account_circle),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'First Name',
+        hintText: 'Name',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
       ),
     );
 
-    final eamilFiled = TextFormField(
+
+    final passwordFiled = TextFormField(
       autocorrect: false,
-      controller: _nameController,
-      keyboardType: TextInputType.emailAddress,
+      controller: _passwordController,
+      obscureText: true,
+
 
       onSaved: (value)  {
-        _nameController.text = value!;
+        _passwordController.text = value!;
       },
 
       //키보드에 사용할 작업 버튼
       textInputAction: TextInputAction.next,
 
       decoration: InputDecoration(
+        prefixIcon: Icon(Icons.lock),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'First Name',
+        hintText: 'password',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
       ),
     );
 
+
+    final confirmPasswordFiled = TextFormField(
+      autocorrect: false,
+      controller: _confirmPasswordCotroller,
+      obscureText: true,
+
+      onSaved: (value){
+        _confirmPasswordCotroller.text = value!;
+      },
+
+      textInputAction:  TextInputAction.done,
+
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.lock),
+        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        hintText: 'confirmPassword',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+
+    );
+
+    final emailFiled = TextFormField(
+      autocorrect: false,
+      controller: _emailController,
+      keyboardType: TextInputType.emailAddress,
+
+      onSaved: (value){
+        _emailController.text = value!;
+      },
+
+      textInputAction: TextInputAction.next,
+
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.mail),
+        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        hintText: 'email',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
+
+
+    // Material 디자인 버튼 생성
+    final signUpButton = Material(
+      elevation: 5,
+      borderRadius: BorderRadius.circular(30),
+      color: Colors.redAccent,
+
+      child: MaterialButton(
+        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        onPressed: () {},
+        minWidth: MediaQuery.of(context).size.width,
+        child:
+        Text('sign up',
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.white,
+        ),),
+
+      ),
+    );
 
     // 외부 클릭시 키보드 사라지게
    return GestureDetector(
@@ -108,10 +177,18 @@ class _CreatePageState extends State<CreatePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
 
                   children: <Widget>[
-                    SizedBox(height: 45),
+
                     firstNameField,
-                    SizedBox(height : 45),
-                    eamilFiled,
+                    SizedBox(height : 20),
+                    emailFiled,
+
+                    SizedBox(height: 20),
+                    passwordFiled,
+                    SizedBox(height: 20),
+                    confirmPasswordFiled,
+
+                    SizedBox(height: 20),
+                    signUpButton,
                   ],
                 ),
 
