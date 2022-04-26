@@ -124,7 +124,7 @@ class _CreatePageState extends State<CreatePage> {
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.mail),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-        hintText: 'email',
+        hintText: 'Id',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -136,7 +136,7 @@ class _CreatePageState extends State<CreatePage> {
     final signUpButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.redAccent,
+      color: Colors.lightBlueAccent,
 
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -162,6 +162,10 @@ class _CreatePageState extends State<CreatePage> {
       //   keyboardType: TextInputType.emailAddress,
       // )
           child: Scaffold(
+
+            appBar: AppBar(
+              backgroundColor: Colors.lightBlueAccent,
+            ),
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
@@ -187,8 +191,9 @@ class _CreatePageState extends State<CreatePage> {
                     SizedBox(height: 20),
                     confirmPasswordFiled,
 
-                    SizedBox(height: 20),
+                    SizedBox(height: 50),
                     signUpButton,
+
                   ],
                 ),
 

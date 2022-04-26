@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ar/home_screen.dart';
 
 import 'create_page.dart';
 
@@ -54,16 +55,20 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ButtonBar(children: [
                 FlatButton(onPressed: () {
-                },
+                  },
+
                     child: Text("Login", style: TextStyle(fontSize: 18,
                         fontWeight: FontWeight.w600 ,
                         color: Colors.black87),
                     )),
+
+
                 FlatButton(onPressed: (){
                   Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context)=>CreatePage()));
                 },
+
                     child: Text(
                       "Register",style: TextStyle(fontSize: 18,
                         fontWeight: FontWeight.w600  ,
@@ -83,7 +88,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               new FlatButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>HomeScreen()));
+
+                },
                 color: Colors.lightBlueAccent,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(_cornerRadius)
