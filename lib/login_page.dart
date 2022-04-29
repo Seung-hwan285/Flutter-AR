@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return  Scaffold(
       body: new Container(
         padding: EdgeInsets.all(16),
         color: Colors.white,

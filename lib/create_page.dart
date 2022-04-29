@@ -68,8 +68,7 @@ class _CreatePageState extends State<CreatePage> {
       autocorrect: false,
       controller: _passwordController,
       obscureText: true,
-
-
+      
       onSaved: (value)  {
         _passwordController.text = value!;
       },
@@ -119,6 +118,10 @@ class _CreatePageState extends State<CreatePage> {
         _emailController.text = value!;
       },
 
+      onChanged: (value){
+        _passwordController.text =value;
+      },
+
       textInputAction: TextInputAction.next,
 
       decoration: InputDecoration(
@@ -132,6 +135,9 @@ class _CreatePageState extends State<CreatePage> {
     );
 
 
+
+
+
     // Material 디자인 버튼 생성
     final signUpButton = Material(
       elevation: 5,
@@ -140,7 +146,10 @@ class _CreatePageState extends State<CreatePage> {
 
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-        onPressed: () {},
+        onPressed: ()async {
+          print(_nameController.text);
+          print(_passwordController.text);
+        },
         minWidth: MediaQuery.of(context).size.width,
         child:
         Text('sign up',
@@ -154,15 +163,18 @@ class _CreatePageState extends State<CreatePage> {
 
     // 외부 클릭시 키보드 사라지게
    return GestureDetector(
-        onTap: ()=>FocusManager.instance.primaryFocus?.unfocus(),
+     
+        onTap: (){
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
 
+     
       // final secondName =TextFormField(
       //   autocorrect: false,
       //   controller: _secondController,
       //   keyboardType: TextInputType.emailAddress,
       // )
           child: Scaffold(
-
             appBar: AppBar(
               backgroundColor: Colors.lightBlueAccent,
             ),
