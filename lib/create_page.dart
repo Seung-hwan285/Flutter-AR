@@ -21,8 +21,7 @@ class _CreatePageState extends State<CreatePage> {
   late TextEditingController controller;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  bool _suceess=false;
-  String _userEmail='';
+
 
   OutlineInputBorder _border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
@@ -213,14 +212,14 @@ class _CreatePageState extends State<CreatePage> {
                       children: <Widget>[
 
 
-                        firstNameField,
+     
                         SizedBox(height : 20),
                         IdFiled,
 
                         SizedBox(height: 20),
                         passwordFiled,
                         SizedBox(height: 20),
-                        confirmPasswordFiled,
+
 
                         SizedBox(height: 50),
                         signUpButton,
