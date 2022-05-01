@@ -6,8 +6,8 @@ void main(){
 
   // 호출할 수 있게 함수가 생긴거고
   // 사용할수 있게 추가해주는거거
- // WidgetsFlutterBinding.ensureInitialized();
- //  Firebase.initializeApp();
+ WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   runApp(new MyApp());
 }
 
