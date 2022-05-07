@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ar/home_screen.dart';
-
 import 'create_page.dart';
+import 'package:get/get.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -23,6 +24,8 @@ class _LoginPageState extends State<LoginPage> {
       borderRadius: BorderRadius.circular(_cornerRadius),
       borderSide: BorderSide(
           color: Colors.transparent,width: 0));
+
+  var logger;
 
   void validateAndSave() {
     final form = formKey.currentState;
@@ -88,10 +91,32 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               new FlatButton(
-                onPressed: (){
-                  Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>HomeScreen()));
+                onPressed: () async {
+                  try{
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                      email: _IdController.text,
+                      password: _passwordController.text,
+                    );
+                    Get.offAll(()=> HomeScreen());
+                  } on FirebaseAuthException catch(e){
+                    logger.e(e);
+                    String message ='';
 
+                    if(e.code == 'user-not-found'){
+                      message ='사용자가 존재하지 않습니다.';
+                    }else if (e.code == 'wrong-password') {
+                      message = '비밀번호를 확인하세요';
+                    } else if (e.code == 'invalid-email') {
+                      message = '이메일을 확인하세요.';
+                    }
+                    
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                        content: Text(message),
+                        backgroundColor: Colors.deepOrange,),);
+                  }
+                  //Navigator.push(context,
+                  //MaterialPageRoute(builder: (context)=>HomeScreen()));
                 },
                 color: Colors.lightBlueAccent,
                 shape: RoundedRectangleBorder(
@@ -119,6 +144,7 @@ class _LoginPageState extends State<LoginPage> {
 
       cursorColor:  Colors.white,
       controller:  controller,
+      obscureText: true,
 
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
@@ -143,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
       controller: controller,
       validator: (text) {
         if (text == null || text.isEmpty) {
-          return "Email can\'t be empty";
+          return "이메일을 확인해주세요";
         }
         return null;
       },
