@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ButtonBar(children: [
                 FlatButton(onPressed: () {
-                  },
+                },
 
                     child: Text("Login", style: TextStyle(fontSize: 18,
                         fontWeight: FontWeight.w600 ,
@@ -99,9 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                     );
                     Get.offAll(()=> HomeScreen());
                   } on FirebaseAuthException catch(e){
-                   print(e);
+                    print(e);
 
-                   //logger.e(e);
+                    //logger.e(e);
                     String message =' ';
 
                     if(e.code == 'user-not-found'){
@@ -111,9 +111,9 @@ class _LoginPageState extends State<LoginPage> {
                     } else if (e.code == 'invalid-email') {
                       message = '이메일을 확인하세요.';
                     }
-                  print(message);
+                    print(message);
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                      SnackBar(
                         content: Text(message),
                         backgroundColor: Colors.deepOrange,),);
                   }
@@ -151,9 +151,6 @@ class _LoginPageState extends State<LoginPage> {
       onSaved: (value) {
         _passwordController.text=value!;
       },
-      onChanged: (value) {
-        _passwordController.text = value;
-      },
 
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
@@ -186,10 +183,6 @@ class _LoginPageState extends State<LoginPage> {
       onSaved: (value) {
         _IdController.text=value!;
       },
-      onChanged: (value) {
-        _IdController.text = value;
-      },
-
       style: TextStyle(color: Colors.white),
       decoration:  InputDecoration(
         prefixIcon: Icon(Icons.account_circle),
@@ -202,5 +195,5 @@ class _LoginPageState extends State<LoginPage> {
         focusedBorder: _border,),
 
     );
-    }
+  }
 }
