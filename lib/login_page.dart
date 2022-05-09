@@ -99,17 +99,19 @@ class _LoginPageState extends State<LoginPage> {
                     );
                     Get.offAll(()=> HomeScreen());
                   } on FirebaseAuthException catch(e){
-                    logger.e(e);
-                    String message ='';
+                   print(e);
+
+                   //logger.e(e);
+                    String message =' ';
 
                     if(e.code == 'user-not-found'){
-                      message ='사용자가 존재하지 않습니다.';
+                      message = '사용자가 존재하지 않습니다.';
                     }else if (e.code == 'wrong-password') {
                       message = '비밀번호를 확인하세요';
                     } else if (e.code == 'invalid-email') {
                       message = '이메일을 확인하세요.';
                     }
-                    
+                  print(message);
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                         content: Text(message),
@@ -146,6 +148,13 @@ class _LoginPageState extends State<LoginPage> {
       controller:  controller,
       obscureText: true,
 
+      onSaved: (value) {
+        _passwordController.text=value!;
+      },
+      onChanged: (value) {
+        _passwordController.text = value;
+      },
+
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
 
@@ -173,6 +182,14 @@ class _LoginPageState extends State<LoginPage> {
         }
         return null;
       },
+
+      onSaved: (value) {
+        _IdController.text=value!;
+      },
+      onChanged: (value) {
+        _IdController.text = value;
+      },
+
       style: TextStyle(color: Colors.white),
       decoration:  InputDecoration(
         prefixIcon: Icon(Icons.account_circle),
